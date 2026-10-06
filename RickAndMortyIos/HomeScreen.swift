@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeScreen: View {
     
     var body: some View {
         VStack {
-            CardImage(imageResource: "rick_and_morty", title: "Characters", action: {})
-            CardImage(imageResource: "img_episode", title: "Locations", action: {})
-            CardImage(imageResource: "img_location", title: "Episodes", action: {})
+            CardImage(imageResource: "rick_and_morty", title: "CHARACTERS", action: {})
+            CardImage(imageResource: "img_episode", title: "LOCATIONS", action: {})
+            CardImage(imageResource: "img_location", title: "EPISODES", action: {})
         }.navigationTitle("Home")
     }
 }
@@ -23,16 +23,13 @@ struct CardImage: View {
     let title: String
     let action: () -> Void
     var body: some View {
-        VStack{
-            Image(imageResource).resizable().frame(
-                width: .infinity,
-                height: 200
-            )
+        VStack(spacing: 0){
+            Image(imageResource).resizable().frame(maxWidth: .infinity, maxHeight:.infinity)
             Text(title)
-        }.background(Color.gray).padding()
+        }.background(Color.gray).border(Color.black, width: 1).padding()
     }
 }
 
 #Preview {
-    ContentView()
+    HomeScreen()
 }
