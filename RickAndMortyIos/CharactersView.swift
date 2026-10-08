@@ -35,9 +35,12 @@ struct CharactersView: View {
         Character(name: "Rick Sanchez", status: Status.Alive, species: "human")]
     
     var body: some View {
-        List(characters){item in
-            CharacterItem(name: item.name, status:item.status, specie: item.species)
+        VStack{
+            ForEach(characters) { item in
+                CharacterItem(name: item.name, status:item.status, specie: item.species)
+            }
         }
+
     }
     
     
@@ -62,7 +65,7 @@ struct CharactersView: View {
                         Text(specie).frame(maxWidth: .infinity)
                     }.padding(.bottom,8)
                 }
-            }.border(Color.black, width: 1).frame(maxWidth: .infinity, maxHeight:100)
+            }.frame(maxWidth: .infinity, maxHeight:100).border(.black).padding(8)
         }
     }
 
