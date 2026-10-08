@@ -25,8 +25,8 @@ struct CardImage: View {
     var body: some View {
         VStack(spacing: 0){
             Image(imageResource).resizable().frame(maxWidth: .infinity, maxHeight:.infinity)
-            Text(title)
-        }.background(Color.gray).border(Color.black, width: 1).padding()
+            Text(title).fontWeight(.bold)	
+        }.border(Color.black, width: 2).padding()
     }
 }
 
