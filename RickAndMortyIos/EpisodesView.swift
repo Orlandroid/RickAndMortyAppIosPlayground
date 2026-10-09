@@ -20,7 +20,7 @@ struct EpisodesView: View {
 struct EpisodeItem: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("S01E01")
+            Text("S01E01").bold()
             HStack{
                 Text("Pilot")
                 Spacer()
