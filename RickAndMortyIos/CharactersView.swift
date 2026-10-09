@@ -65,7 +65,7 @@ struct CharactersView: View {
                         Text(specie).frame(maxWidth: .infinity)
                     }.padding(.bottom,8)
                 }
-            }.frame(maxWidth: .infinity, maxHeight:100).border(.black).padding(8)
+            }.frame(maxWidth: .infinity, maxHeight:100).border(.black,width: 2).padding(8)
         }
     }
 
