@@ -39,6 +39,7 @@ struct HomeScreen: View {
                     navigationPath.append(RickAndMotyNavigationType.episodes)
                 })
             }
+            .navigationTitle("Home")
             .navigationDestination(for:RickAndMotyNavigationType.self){ screen in
                 switch screen{
                 case .characters: CharactersView()

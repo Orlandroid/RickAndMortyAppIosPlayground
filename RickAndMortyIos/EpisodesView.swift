@@ -27,7 +27,7 @@ struct EpisodeItem: View {
                 Image(systemName: "arrow.right.circle.fill")
             }
             Text("December 2, 2013")
-        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black)
+        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Episodes").navigationBarTitleDisplayMode(.inline)
     }
 }
 

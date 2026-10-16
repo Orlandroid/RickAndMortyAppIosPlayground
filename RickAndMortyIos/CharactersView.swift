@@ -39,8 +39,7 @@ struct CharactersView: View {
             ForEach(characters) { item in
                 CharacterItem(name: item.name, status:item.status, specie: item.species)
             }
-        }
-
+        }.navigationTitle("Characters").navigationBarTitleDisplayMode(.inline)
     }
     
     
