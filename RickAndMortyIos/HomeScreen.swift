@@ -11,32 +11,24 @@ struct HomeScreen: View {
     
     
     
-    enum RickAndMotyNavigationType {
-        case characters
-        case episodes
-        case locations
-        case characterDetail
-        case episodeDetail
-        case locationDetail
-    }
     
-    @State var navigationPath = NavigationPath()
+    @State var navigationManager = NavigationManager.shared
     
     
     var body: some View {
-        NavigationStack(path: $navigationPath){
+        NavigationStack(path: $navigationManager.path){
             VStack {
                 CardImage(imageResource: "rick_and_morty", title: "CHARACTERS", action: {
                     print("Characters clicked")
-                    navigationPath.append(RickAndMotyNavigationType.characters)
+                    navigationManager.path.append(RickAndMotyNavigationType.characters)
                 })
                 CardImage(imageResource: "img_episode", title: "LOCATIONS", action: {
                     print("Locations clicked")
-                    navigationPath.append(RickAndMotyNavigationType.locations)
+                    navigationManager.path.append(RickAndMotyNavigationType.locations)
                 })
                 CardImage(imageResource: "img_location", title: "EPISODES", action: {
                     print("Episodes clicked")
-                    navigationPath.append(RickAndMotyNavigationType.episodes)
+                    navigationManager.path.append(RickAndMotyNavigationType.episodes)
                 })
             }
             .navigationTitle("Home")
@@ -45,7 +37,7 @@ struct HomeScreen: View {
                 case .characters: CharactersView()
                 case .episodes:EpisodesView()
                 case .locations:LocationsView()
-                case .characterDetail:CharactersView()
+                case .characterDetail:CharacterDetailView()
                 case .episodeDetail: CharactersView()
                 case .locationDetail:CharactersView()
                 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct CharactersView: View {
     
     
+    @State var navigationManager = NavigationManager.shared
+    
     enum Status:String{
         case Alive = "Alive"
         case   Dead = "Dead"
@@ -37,7 +39,10 @@ struct CharactersView: View {
     var body: some View {
         VStack{
             ForEach(characters) { item in
-                CharacterItem(name: item.name, status:item.status, specie: item.species)
+                CharacterItem(name: item.name, status:item.status, specie: item.species,onNavigatetoCharacterDetail: {
+                    print("Navigate to detail")
+                    navigationManager.path.append(RickAndMotyNavigationType.characterDetail)
+                })
             }
         }.navigationTitle("Characters").navigationBarTitleDisplayMode(.inline)
     }
@@ -47,6 +52,7 @@ struct CharactersView: View {
         let name:String
         let status: Status
         let specie: String
+        let onNavigatetoCharacterDetail: () -> Void
         var body: some View {
             HStack{
                 Image("rick_and_morty").resizable().frame(maxWidth: .infinity, maxHeight:.infinity)
@@ -64,7 +70,9 @@ struct CharactersView: View {
                         Text(specie).frame(maxWidth: .infinity)
                     }.padding(.bottom,8)
                 }
-            }.frame(maxWidth: .infinity, maxHeight:100).border(.black,width: 2).padding(8)
+            }.frame(maxWidth: .infinity, maxHeight:100).border(.black,width: 2).padding(8).onTapGesture {
+                onNavigatetoCharacterDetail()
+            }
         }
     }
 
