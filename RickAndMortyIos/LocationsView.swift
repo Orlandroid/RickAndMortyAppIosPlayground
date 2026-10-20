@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct LocationsView: View {
+    
+    @State var navigationManager = NavigationManager.shared
+    
     var body: some View {
         ScrollView{
             LazyVStack(spacing:0){
                 ForEach(0..<32){item in
-                    LocationItem()
+                    LocationItem(navigateToDetail: {
+                        navigationManager.path.append(RickAndMotyNavigationType.locationDetail)
+                    })
                 }
             }
         }
@@ -21,6 +26,7 @@ struct LocationsView: View {
 
 
 struct LocationItem: View {
+    let navigateToDetail: () -> Void
     var body: some View {
         HStack{
             VStack(alignment: .leading){
@@ -29,7 +35,9 @@ struct LocationItem: View {
             }
             Spacer()
             Image(systemName: "arrow.right.circle.fill")
-        }.padding(.horizontal,32).padding(.vertical,8).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Locations").navigationBarTitleDisplayMode(.inline)
+        }.padding(.horizontal,32).padding(.vertical,8).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Locations").navigationBarTitleDisplayMode(.inline).onTapGesture {
+            navigateToDetail()
+        }
     }
 }
 

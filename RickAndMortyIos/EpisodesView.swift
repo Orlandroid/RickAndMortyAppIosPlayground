@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct EpisodesView: View {
+    @State var navigationManager = NavigationManager.shared
     var body: some View {
         VStack{
             ForEach(0 ..< 10) { number in
-                EpisodeItem()
+                EpisodeItem(navigateToDetail: {
+                    navigationManager.path.append(RickAndMotyNavigationType.episodeDetail)
+                })
             }
         }
     }
 }
 
 struct EpisodeItem: View {
+    let navigateToDetail: () -> Void
     var body: some View {
         VStack(alignment: .leading){
             Text("S01E01").bold()
@@ -27,7 +31,9 @@ struct EpisodeItem: View {
                 Image(systemName: "arrow.right.circle.fill")
             }
             Text("December 2, 2013")
-        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Episodes").navigationBarTitleDisplayMode(.inline)
+        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Episodes").navigationBarTitleDisplayMode(.inline).onTapGesture {
+            navigateToDetail()
+        }
     }
 }
 

@@ -9,9 +9,6 @@ import SwiftUI
 
 struct HomeScreen: View {
     
-    
-    
-    
     @State var navigationManager = NavigationManager.shared
     
     
@@ -19,16 +16,13 @@ struct HomeScreen: View {
         NavigationStack(path: $navigationManager.path){
             VStack {
                 CardImage(imageResource: "rick_and_morty", title: "CHARACTERS", action: {
-                    print("Characters clicked")
                     navigationManager.path.append(RickAndMotyNavigationType.characters)
                 })
-                CardImage(imageResource: "img_episode", title: "LOCATIONS", action: {
-                    print("Locations clicked")
-                    navigationManager.path.append(RickAndMotyNavigationType.locations)
-                })
                 CardImage(imageResource: "img_location", title: "EPISODES", action: {
-                    print("Episodes clicked")
                     navigationManager.path.append(RickAndMotyNavigationType.episodes)
+                })
+                CardImage(imageResource: "img_episode", title: "LOCATIONS", action: {
+                    navigationManager.path.append(RickAndMotyNavigationType.locations)
                 })
             }
             .navigationTitle("Home")
@@ -38,8 +32,8 @@ struct HomeScreen: View {
                 case .episodes:EpisodesView()
                 case .locations:LocationsView()
                 case .characterDetail:CharacterDetailView()
-                case .episodeDetail: CharactersView()
-                case .locationDetail:CharactersView()
+                case .episodeDetail: EpisodeDetail()
+                case .locationDetail:LocationDetailView()
                 }
             }
         }

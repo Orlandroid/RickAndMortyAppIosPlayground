@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EpisodeDetail: View {
+    
+    @State var navigationManager = NavigationManager.shared
+    
     var body: some View {
         VStack {
                 Image("rick_and_morty").resizable().scaledToFit().padding(.top,8)
@@ -29,12 +32,11 @@ struct EpisodeDetail: View {
                 ScrollView{
                     ForEach(CharactersProvider.getCharacters()) { item in
                         CharacterItem(name: item.name, status:item.status, specie: item.species,onNavigatetoCharacterDetail: {
+                            navigationManager.path.append(RickAndMotyNavigationType.characterDetail)
                         })
                     }
                 }
-                Spacer()
-            
-        }
+        }.navigationTitle("Episode Detail")
     }
 }
 
