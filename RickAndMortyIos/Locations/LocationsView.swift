@@ -20,7 +20,7 @@ struct LocationsView: View {
                     })
                 }
             }
-        }
+        }.navigationTitle("Locations").navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -35,7 +35,7 @@ struct LocationItem: View {
             }
             Spacer()
             Image(systemName: "arrow.right.circle.fill")
-        }.padding(.horizontal,32).padding(.vertical,8).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Locations").navigationBarTitleDisplayMode(.inline).onTapGesture {
+        }.padding(.horizontal,32).padding(.vertical,8).frame(maxWidth:.infinity, alignment: .leading).border(.black).onTapGesture {
             navigateToDetail()
         }
     }

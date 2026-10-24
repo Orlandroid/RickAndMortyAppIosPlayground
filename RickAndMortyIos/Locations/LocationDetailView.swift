@@ -10,10 +10,10 @@ import SwiftUI
 struct LocationDetailView: View {
     var body: some View {
         VStack {
-            Row(title: "Location Name", subtitle: "String")
-            Row(title: "Type", subtitle: "String")
-            Row(title: "Dimension", subtitle: "String")
-            Row(title: "Create", subtitle: "String")
+            Row(title: "Location Name", subtitle: "Earth (C-137)")
+            Row(title: "Type", subtitle: "Planet")
+            Row(title: "Dimension", subtitle: "Dimension C-137")
+            Row(title: "Create", subtitle: "2017")
             ScrollView{
                 ForEach(CharactersProvider.getCharacters()) { item in
                     CharacterItem(name: item.name, status:item.status, specie: item.species,onNavigatetoCharacterDetail: {

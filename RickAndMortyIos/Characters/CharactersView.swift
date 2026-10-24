@@ -13,7 +13,7 @@ struct CharactersView: View {
     @State var navigationManager = NavigationManager.shared
     
     var body: some View {
-        VStack{
+        ScrollView{
             ForEach(CharactersProvider.getCharacters()) { item in
                 CharacterItem(name: item.name, status:item.status, specie: item.species,onNavigatetoCharacterDetail: {
                     navigationManager.path.append(RickAndMotyNavigationType.characterDetail)

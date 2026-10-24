@@ -10,13 +10,13 @@ import SwiftUI
 struct EpisodesView: View {
     @State var navigationManager = NavigationManager.shared
     var body: some View {
-        VStack{
+        ScrollView{
             ForEach(0 ..< 10) { number in
                 EpisodeItem(navigateToDetail: {
                     navigationManager.path.append(RickAndMotyNavigationType.episodeDetail)
                 })
             }
-        }
+        }.navigationTitle("Episodes").navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -31,7 +31,7 @@ struct EpisodeItem: View {
                 Image(systemName: "arrow.right.circle.fill")
             }
             Text("December 2, 2013")
-        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black).navigationTitle("Episodes").navigationBarTitleDisplayMode(.inline).onTapGesture {
+        }.padding(.horizontal,32).frame(maxWidth:.infinity, alignment: .leading).border(.black).onTapGesture {
             navigateToDetail()
         }
     }
